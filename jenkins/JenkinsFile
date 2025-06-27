@@ -1,0 +1,34 @@
+pipeline{
+    agent any
+    stages{
+        stage("Install Dependencies"){
+            steps{
+                dir("test-node-jenkins-pipeline") {
+                    sh "npm install"
+                }
+            }
+        }
+        stage("Build"){
+            steps{
+                dir("test-node-jenkins-pipeline") {
+                    sh "npm run build"
+                }
+            }
+        }
+        stage("Test"){
+            steps{
+                dir("test-node-jenkins-pipeline") {
+                    sh "npm run test"
+                }
+            }
+        }
+    }
+    post {
+    always {
+      echo 'Cleaning up...'
+    }
+    failure {
+      echo 'Build failed.'
+    }
+  }
+}
