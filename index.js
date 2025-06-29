@@ -9,6 +9,10 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+app.get("/health", (req, res) => {
+  res.json({ status: "UP", message: "Server is running smoothly!" });
+});
+
 app.post("/data", (req, res) => {
   const data = req.body;
   console.log("Received data:", data);
