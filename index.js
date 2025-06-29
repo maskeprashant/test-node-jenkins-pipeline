@@ -19,6 +19,12 @@ app.post("/data", (req, res) => {
   res.json({ message: "Data received successfully", data });
 });
 
+app.put("/data", (req, res) => {
+  const data = req.body;
+  console.log("Updated data:", data);
+  res.json({ message: "Data updated successfully", data });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
