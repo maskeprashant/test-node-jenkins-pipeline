@@ -2,6 +2,9 @@ pipeline{
     agent any
     stages{
         stage("Install Dependencies"){
+             when {
+                branch 'main'
+            }
             steps{
                 dir("test-node-jenkins-pipeline") {
                     sh "npm install"
@@ -9,6 +12,9 @@ pipeline{
             }
         }
         stage("Build"){
+            when {
+                branch 'main'
+            }
             steps{
                 dir("test-node-jenkins-pipeline") {
                     sh "npm run build"
@@ -16,6 +22,9 @@ pipeline{
             }
         }
         stage("Test"){
+             when {
+                branch 'main'
+            }
             steps{
                 dir("test-node-jenkins-pipeline") {
                     sh "npm run test"
